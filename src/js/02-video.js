@@ -1,4 +1,5 @@
 import Player from '@vimeo/player';
+var throttle = require('lodash.throttle');
 
 // Объявления переменных
 const iframe = document.getElementById('vimeo-player');
@@ -21,7 +22,7 @@ setTimeOnPageRefresh();
 
 vimeoPlayer.setCurrentTime(currentTime);
 
-vimeoPlayer.on('timeupdate', onTimeUpdate);
+vimeoPlayer.on('timeupdate', throttle(onTimeUpdate, 1000));
 
 
 

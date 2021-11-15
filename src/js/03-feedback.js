@@ -1,3 +1,4 @@
+var throttle = require('lodash.throttle');
 const feedbackForm = document.querySelector('.feedback-form');
 const emailInput = feedbackForm.elements.email;
 const messageInput = feedbackForm.elements.message;
@@ -46,4 +47,4 @@ const onFormSubmit = function (e) {
 // Слушатели и объявления функций
 restoreFormInput();
 feedbackForm.addEventListener('submit', onFormSubmit);
-feedbackForm.addEventListener('input', onFormInput);
+feedbackForm.addEventListener('input', throttle(onFormInput, 500));
